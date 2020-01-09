@@ -3,8 +3,10 @@ const model = require('../models/userModel')
 
 //function to create user !
 let createUser = (data) => {
+
   let user = new model.User(data)
   console.log(user)
+
   return user.save()
 }
 

@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 //import user controller
 const userControllers = require('../../database-mongo/controllers/userController')
+
 /// basic auth
 router.post('/register', async (req, res) => {
  // console.log(req.body)
@@ -25,6 +26,7 @@ router.post('/register', async (req, res) => {
           resolve(hash)
         })
       })
+
       const savedUser = await userControllers.createUser( { name, email, hashedPassword }  )
       const token = jwt.sign(
         { _id: savedUser.id },// id of new user created
@@ -41,9 +43,11 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
+
   const { email, password } = req.body
   //check if the userName is registered or not
   const user = await userControllers.findUser({ email })
+
   if (!user) { res.send("user not exisit") }
   else {
     //if the userName exsit in database check the password
@@ -63,6 +67,7 @@ router.post('/login', async (req, res) => {
     })
   }
 })
+
 
 //////////////////////////////// auth with social media /////////////////////////////////////////
 

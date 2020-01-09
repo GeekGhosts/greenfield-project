@@ -4,6 +4,7 @@ const db = require('../database-mongo/index.js')
 const dotenv = require('dotenv')
 
 const verfiyToken = require('./Middleware/verifyToken')
+
 dotenv.config()
 // import models
 
@@ -15,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 //import routes
+
+
+
 app.get('/', function (req, res) {
   res.json("hi");
 });
@@ -24,11 +28,11 @@ const postRoute = require('./routes/test')
 
 //router middleware
 app.use('/api/user', authRoute)
-app.post('/api/post', verfiyToken, (req, res) => {
+
+app.post('/api/post', verfiyToken, (req, res) => { // session verification
   console.log('here')
   res.json({posts: {title:'post test 1 '}})
 })
-
 
 const port = 8080;
 app.listen(port, function() {

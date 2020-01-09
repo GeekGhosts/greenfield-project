@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
+
     id_facebook :                {type: "string"},
     email_facebook :             {type: "string"},
     name:                        { type: "string"},
@@ -13,8 +14,6 @@ const UserSchema = new Schema({
 })
 
 User = mongoose.model('User',UserSchema)
-
-module.exports.User = User
 
 /*
 method: {
@@ -32,3 +31,5 @@ method: {
         id:                       {type: String},
         email:                    {type: String,lowercase: true}
     } */
+
+module.exports.User = User

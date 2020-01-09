@@ -1,9 +1,14 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/geekghosts', { useNewUrlParser: true }).then((err) => {
-  if (err) throw err
-  console.log('Database geekghosts connected successfully');
-})
+mongoose.connect('mongodb://localhost/geekghosts');
+
 var db = mongoose.connection;
 
-module.exports = db;
+db.on('error', function() {
+  console.log('mongoose connection error');
+});
 
+db.once('open', function() {
+  console.log('Database geekghosts connected successfully');
+});
+
+module.exports = db
