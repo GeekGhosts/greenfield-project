@@ -2,7 +2,14 @@ const jwt = require('jsonwebtoken')
 
 let verfiyToken = (req, res, next) => {
   //get the token from the header
-  const token = req.header('auth-token')
+  const token = req.body.data
+  console.log(token)
+
+  //tokenFromWindow = req.body
+  //console.log(tokenFromWindow)
+  //const token = this.localStorage.getItem(token)
+  //console.log("test", token )
+
   if(!token) {
     console.log(req.header.auth-token)
     res.status(401).json({"hasToken": false , msg:" Acess denied "})
