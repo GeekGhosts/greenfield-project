@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, hashHistory } from 'react-router-dom';
 
-
 import {
   Collapse,
   Navbar,
@@ -32,7 +31,7 @@ const Bar = (props) => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link to="home"className="nav-link waves-effect waves-light">Home <span className="sr-only">(current)</span></Link>
+                        <Link to="home"className="nav-link waves-effect waves-light">Home <span className="sr-only"></span></Link>
                     </li>
                     <li className="nav-item">
                     <Link to="Women" className="nav-link waves-effect waves-light">Women</Link>
@@ -41,13 +40,13 @@ const Bar = (props) => {
                     <Link to="Men" className="nav-link waves-effect waves-light" >Men</Link>
                     </li>
                     <li className="nav-item">
-                    <Link className="nav-link waves-effect waves-light" >Children</Link>
+                    <Link to="Children" className="nav-link waves-effect waves-light" >Children</Link>
                     </li>
                 </ul>
                 <ul className="navbar-nav nav-flex-icons">
 
                     <li className="nav-item">
-                        <a className="nav-link waves-effect waves-light"><i class="fas fa-cart-arrow-down"></i></a>
+                        <Link to="cart" className="nav-link waves-effect waves-light"><i class="fas fa-cart-arrow-down"></i></Link>
                     </li>
                     <li className="nav-item">
                         <Link to="signup" className="nav-link waves-effect waves-light"><i class="fas fa-user-alt"></i></Link>
