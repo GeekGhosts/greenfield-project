@@ -1,29 +1,33 @@
 import React, { Component } from "react";
+
 import { MDBRow, MDBCard, MDBCardBody, MDBTooltip, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBBtn } from "mdbreact";
 
 class Cart extends Component {
-    state : {
+
+  constructor(props) {
+    super(props)
+    this.state = {
       data: [
           {
-            src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg",
-            title: "iPhone",
-            subTitle: "Apple",
+            src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg",
+            title: "Blouse",
+            subTitle: "Zara",
             color: "White",
             price: "800",
             qty: "2"
           },
           {
-            src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg",
-            title: "Headphones",
-            subTitle: "Sony",
+            src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg",
+            title: "Blouse",
+            subTitle: "Zara",
             color: "Red",
             price: "200",
             qty: "2"
           },
           {
-            src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg",
-            title: "iPad Pro",
-            subTitle: "Apple",
+            src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg",
+            title: "Blouse",
+            subTitle: "Exist",
             color: "Gold",
             price: "600",
             qty: "1"
@@ -35,23 +39,23 @@ class Cart extends Component {
             field: 'img',
           },
           {
-            label: 'Product' ,
+            label: <strong>Product</strong>,
             field: 'product'
           },
           {
-            label: 'Color',
+            label: <strong>Color</strong>,
             field: 'color'
           },
           {
-            label: 'Price',
+            label: <strong>Price</strong>,
             field: 'price'
           },
           {
-            label: 'QTY',
+            label: <strong>QTY</strong>,
             field: 'qty'
           },
           {
-            label: 'Amount',
+            label: <strong>Amount</strong>,
             field: 'amount'
           },
           {
@@ -60,7 +64,7 @@ class Cart extends Component {
           }
       ]
     }
-
+  }
 render() {
 
     const rows = [];
@@ -70,7 +74,7 @@ render() {
       return rows.push(
         {
         'img': <img src={row.src} alt="" className="img-fluid z-depth-0" />,
-        'product': [<h5 className="mt-3" key={new Date().getDate + 1}><strong>{row.title}</strong></h5>, <p key={new
+        'product': [<h6 className="mt-3" key={new Date().getDate + 1}><strong>{row.title}</strong></h6>, <p key={new
           Date().getDate} className="text-muted">{row.subTitle}</p>],
         'color': row.color,
         'price': `$${row.price}`,
@@ -89,7 +93,8 @@ render() {
     });
 
     return (
-    <MDBRow className="my-2" center>
+
+    <MDBRow className="my-2" center style={{ margin: "350px" }} >
       <MDBCard className="w-100">
         <MDBCardBody>
           <MDBTable className="product-table">

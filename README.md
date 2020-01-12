@@ -17,8 +17,4 @@ Please make sure you interact with this repo as we usually do with the toyproble
 ## Let's put that in practice
 In your respective local branches, update your README by pulling from the master remote, pushing to your branch and making a pull request!
 
-<<<<<<< HEAD
 Let's go _**GHOSTS**_!!
-=======
-Let's go _**GHOSTS**_!!
->>>>>>> 1173da014d189edd1301368feff1acc7824810b2
