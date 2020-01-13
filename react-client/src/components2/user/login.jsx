@@ -5,6 +5,7 @@ import $ from 'jquery';
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    // login state
     this.state = {
       login_email: "",
       login_password: ""
@@ -18,6 +19,7 @@ class Login extends React.Component {
       password: this.state.login_password
     };
     var that = this
+    // send the data to the local storage and get data of the speacific user who log in
     $.post("/api/user/login", data, function(res){
       console.log(res)
       let token = res.token
@@ -34,24 +36,11 @@ class Login extends React.Component {
     this.setState({[event.target.id]: event.target.value});
   }
 
-  componentDidMount() {
-    // $.ajax({
-    //   url: '/someroute',
-    //   success: (data) => {
-    //     this.setState({
-    //       someState: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
-  }
-
   render() {
     return (
+      // login form with email and password
       <MDBCol md="6">
-      <MDBCard style={{  height: "585px"}}>
+      <MDBCard>
         <h2 className="h2 text-center py-4">Already have an account?</h2>
         <MDBCardBody>
           <form>

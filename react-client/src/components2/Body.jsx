@@ -15,6 +15,7 @@ import HomeCarousel from "./body-components/homeCarousel.jsx"
 const Body = props => {
   return (
     <div>
+      {/* Home page */}
       <section className="text-center my-5">
         <MDBRow>
           <HomeCarousel categoryName="/store/men" categoryImage="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/8.jpg" />

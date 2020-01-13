@@ -9,6 +9,7 @@ import $ from "jquery"
 class Checkout extends Component {
   constructor(props) {
     super(props)
+    // adress and complete info about the user like a state
     this.state = {
       ordered: false,
       activePill: "1",
@@ -25,7 +26,8 @@ class Checkout extends Component {
 
     }
   }
-
+// submit the form of the checkout from when clicking
+ checkout
   handleClick(event) {
     event.preventDefault();
     var that = this
@@ -49,7 +51,7 @@ class Checkout extends Component {
       total_order_price: this.props.totalPrice
     }
     console.log('sending')
-
+//
     $.post('/api/add/orders', data, (result)=> {
       this.setState({
         ordered: true
@@ -63,6 +65,7 @@ class Checkout extends Component {
     console.log(this.state)
   }
 
+  // render different datas with a same component, using Tab and Pills.
   togglePills(tab) {
     if (this.state.activePill !== tab) {
       this.setState({
@@ -70,13 +73,12 @@ class Checkout extends Component {
       });
     }
   }
-
   selectNextTab() {
     this.setState({
       activePill: (+this.state.activePill + 1).toString()
     });
   }
-
+// render checkout form with MDBootstrap
   render() {
     return (
       <MDBContainer>

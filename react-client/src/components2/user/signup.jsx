@@ -12,7 +12,7 @@ class SignUp extends React.Component {
       register_password_confirmation: ""
     };
   }
-
+// send the user info to the data
   handleClick(event) {
     event.preventDefault();
     var data = {
@@ -25,6 +25,7 @@ class SignUp extends React.Component {
     $.post('/api/user/register', data, function(res){
       console.log(res)
       let token = res.token
+      // send the data to the local storage
       window.localStorage.setItem('token',token);
       $.get(`/api/getUserById/${res.userId}`, function(response) {
         that.props.setUserData(response._id, response.name, response.email)
@@ -38,19 +39,6 @@ class SignUp extends React.Component {
     this.setState({[event.target.id]: event.target.value});
   }
 
-  componentDidMount() {
-    // $.ajax({
-    //   url: '/someroute',
-    //   success: (data) => {
-    //     this.setState({
-    //       someState: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
-  }
 
   render() {
     return (

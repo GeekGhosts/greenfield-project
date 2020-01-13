@@ -6,6 +6,7 @@ class Cart extends Component {
   constructor(props) {
     super(props)
       this.state = {
+        // head of the cart table
           columns: [
             {
               label: '',
@@ -50,13 +51,13 @@ class Cart extends Component {
   componentDidMount() {
     console.log(this.props.cartItems)
   }
-
+// remove item from cart
   removeItem(event){
     var productId = event.target.id
     console.log(productId)
     this.props.deleteFromCart(productId);
   }
-
+// render all items which are on the cart
   render() {
     const rows = [];
     const { columns, products } = this.state;

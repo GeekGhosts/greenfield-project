@@ -13,7 +13,7 @@ class Footer extends React.Component {
       inquiry_message: ""
     }
   }
-
+// send contact form on the footer to the data base
   handleClick(event) {
     event.preventDefault();
     var data = {
@@ -28,28 +28,11 @@ class Footer extends React.Component {
         inquiry_message: ""
       })
     })
-
   }
 
   typing(event) {
     this.setState({[event.target.id]: event.target.value});
   }
-
-
-  componentDidMount() {
-    // $.ajax({
-    //   url: '/someroute',
-    //   success: (data) => {
-    //     this.setState({
-    //       someState: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
-  }
-
   render() {
     return (
       <MDBFooter color="grey" className="font-small pt-4 mt-4">
@@ -84,7 +67,7 @@ class Footer extends React.Component {
                 <MDBRow>
                   <MDBCol md="8">
                     <div className="white-text">
-
+                    {/* send the contact form data to the data base */}
                       <MDBInput id="inquiry_email" label="Your email" icon="envelope" group type="email" validate error="wrong" success="right" value={this.state.inquiry_email} onChange={this.typing.bind(this)} />
 
                       <MDBInput id="inquiry_message" label="Your message" icon="lock" group type="textarea" validate value={this.state.inquiry_message} onChange={this.typing.bind(this)} />

@@ -1,11 +1,14 @@
 import React from "react";
+// import teh MDBootstrap
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter, MDBIcon, MDBTooltip, MDBBadge, MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBBtn } from "mdbreact";
+// import the react-router
 import { BrowserRouter as Router, Switch, Route, Link, hashHistory, useParams } from "react-router-dom";
 
 
 class Categories extends React.Component {
   constructor(props) {
     super(props);
+    // initialise the Men and Women categories like a state, every categories will have an array of tags of clothers
     this.state = this.state = {
       men: {
         gender: "Men",
@@ -22,7 +25,7 @@ class Categories extends React.Component {
           },
           {
             tagName: "Jeans",
-            tagImage: "https://oldnavy.gap.com/webcontent/0016/963/918/cn16963918.jpg",
+            tagImage: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/1.jpg",
             tagLink: "/store/men/jeans"
           },
           {
@@ -47,12 +50,12 @@ class Categories extends React.Component {
         tags: [
           {
             tagName: "Jackets",
-            tagImage: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/2.jpg",
+            tagImage: "https://ae01.alicdn.com/kf/HTB1ta5XLpXXXXXcXXXXq6xXFXXXN/2019-Brand-New-Jacket-Men-Top-Design-Casual-Outwear-Spring-Autumn-Slim-Fit-Solid-Mens-Jackets.jpg",
             tagLink: "/store/women/jackets"
           },
           {
             tagName: "Outerwear",
-            tagImage: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/4.jpg",
+            tagImage: "https://oldnavy.gap.com/webcontent/0016/963/918/cn16963918.jpg",
             tagLink: "/store/women/outerwear"
           },
           {
@@ -64,7 +67,7 @@ class Categories extends React.Component {
       }
     };
   }
-
+// render the tow main categories Men and Women
   render() {
     return (
       <div>
@@ -72,9 +75,11 @@ class Categories extends React.Component {
           <h1>All {this.state[this.props.match.params.gender].gender} products </h1>
           <MDBRow>
           {
+            // this will look into the tags array of the categories
             this.state[this.props.match.params.gender].tags.map((element, index)=> (
-              <MDBCol lg="2" md="0" className="mb-lg-0 mb-4" key={index} >
+              <MDBCol lg="2" md="0" className="mb-lg-0 mb-4" key={index}>
                 <MDBCard cascade narrow ecommerce>
+                  {/* react router Link */}
                   <Link to={element.tagLink}>
                     <MDBCardImage
                       cascade

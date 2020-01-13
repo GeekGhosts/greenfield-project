@@ -18,7 +18,7 @@ import SignUp from "./components2/user/signup.jsx";
 import Account from "./components2/user/account.jsx";
 import Checkout from "./components2/user/checkout.jsx";
 
-
+import Dashboard from "./components2/dashboard/dashboard.jsx"
 import ProductList from "./components2/body-components/productList.jsx";
 import Women from "./components2/categories/Women.jsx";
 import ProductDetails from "./components2/categories/ProductDetails.jsx";
@@ -27,17 +27,20 @@ import Categories from "./components2/body-components/categories.jsx";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    // state of user login to keep the user login till he log out
     this.state = {
       userData: {
         _id: "",
         name: "",
         email: ""
       },
+
       cartItems : [],
       totalPrice: 0
     }
   }
 
+//
   setUserData(id, name, email) {
     this.setState({
       userData: {
@@ -48,7 +51,7 @@ class App extends React.Component {
     })
 
   }
-
+// will store all the user state into our local storage
   resetUserState() {
     window.localStorage.clear()
     this.setState({
@@ -78,7 +81,7 @@ class App extends React.Component {
 
     })
   }
-
+//  add choosen items to cart
   addToCart(product, selectedSize, quantity) {
     var arr = this.state.cartItems
     var total = this.state.totalPrice + product.price
@@ -93,7 +96,7 @@ class App extends React.Component {
     })
     console.log(this.state.cartItems)
   }
-
+// will activate the delete article option into the cart componment
   deleteFromCart(productId){
     var arr = this.state.cartItems
     var newPrice = this.state.totalPrice
@@ -105,12 +108,14 @@ class App extends React.Component {
         newPrice -= elem.product.price
       }
     })
+// update the card after deletion or adding items
     this.setState({
       cartItems: arr,
       totalPrice: newPrice
     })
   }
 
+  // reset the cart to empty
   reset() {
     this.setState({
       cartItems : [],
@@ -120,6 +125,7 @@ class App extends React.Component {
 
   render() {
     return (
+      // all the react router
       <Router>
         <div>
           <Header userData={this.state.userData} resetUserState={this.resetUserState.bind(this)} />
@@ -137,6 +143,8 @@ class App extends React.Component {
             <Route exact path="/checkout" component={() => <Checkout userData={this.state.userData} totalPrice={this.state.totalPrice} cartItems={this.state.cartItems} reset={this.reset.bind(this)}/>} />
 
             <Route exact path="/account" component={() => <Account userData={this.state.userData} setUserData={this.setUserData.bind(this)} /> } />
+
+            <Route exact path="/dashboard" component={Dashboard} />
 
           </Switch>
 

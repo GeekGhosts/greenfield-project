@@ -29,21 +29,6 @@ class Header extends React.Component {
     super(props);
   }
 
-
-  componentDidMount() {
-    // $.ajax({
-    //   url: '/someroute',
-    //   success: (data) => {
-    //     this.setState({
-    //       someState: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
-  }
-
   render() {
     return (
       <nav className="navbar  navbar-expand-lg navbar-dark grey scrolling-navbar">
@@ -69,6 +54,7 @@ class Header extends React.Component {
             </li>
           </ul>
           <ul className="navbar-nav nav-flex-icons">
+            {/* test if there is a log in or not */}
             {
               (this.props.userData.name === "") ? (
                 <li className="nav-item">
@@ -77,6 +63,7 @@ class Header extends React.Component {
                   </Link>
                 </li>
               ) : (
+                {/* will appear the welcome message to the user when he log in */}
                 <Link to="/" className="navbar-brand">
                   <strong>Hey there, {this.props.userData.name}</strong>
                 </Link>
