@@ -2,12 +2,16 @@ import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 import SignUp from './signup.jsx';
 import Login from './login.jsx';
+import $ from 'jquery';
+import { Redirect } from 'react-router-dom'
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      someState: []
+      userData: {
+        userId: ""
+      }
     };
   }
 
@@ -28,10 +32,14 @@ class Account extends React.Component {
   render() {
     return (
       <MDBContainer>
-        <MDBRow>
-          <SignUp />
-          <Login />
-        </MDBRow>
+      {
+          (this.props.userData.name === "") ? (
+              <MDBRow>
+                <SignUp setUserData={this.props.setUserData} />
+                <Login setUserData={this.props.setUserData} />
+              </MDBRow>
+          ) : <Redirect to='/' />
+        }
       </MDBContainer>
     );
   }

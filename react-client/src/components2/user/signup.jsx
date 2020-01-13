@@ -1,5 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import $ from 'jquery';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -14,18 +15,20 @@ class SignUp extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    var data = {};
-    for (var keys in this.state) {
-      data[keys] = this.state[keys]
-    }
+    var data = {
+      name: this.state.register_name,
+      email: this.state.register_email,
+      password: this.state.register_password,
+      confirmedPassword: this.state.register_password_confirmation
+    };
     var that = this
-    $.post("/signIn", data, function(boo){
-      if (boo) {
-        that.props.authenticated(that.state.email);
-        that.props.redirectHome();
-      } else {
-        that.resetState();
-      }
+    $.post('/api/user/register', data, function(res){
+      console.log(res)
+      let token = res.token
+      window.localStorage.setItem('token',token);
+      $.get(`/api/getUserById/${res.userId}`, function(response) {
+        that.props.setUserData(response._id, response.name, response.email)
+      })
 
     })
 
@@ -51,8 +54,8 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <MDBCol md="6" >
-      <MDBCard style={{height:" 588px"}}>
+      <MDBCol md="6">
+      <MDBCard>
       <h2 className="h2 text-center py-4">First time you visit us?</h2>
         <MDBCardBody>
           <form>
@@ -67,7 +70,7 @@ class SignUp extends React.Component {
 
             </div>
             <div className="text-center py-4 mt-3">
-              <MDBBtn color="cyan" type="submit">Register</MDBBtn>
+              <MDBBtn color="cyan" type="submit" onClick={this.handleClick.bind(this)} >Register</MDBBtn>
             </div>
           </form>
         </MDBCardBody>

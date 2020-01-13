@@ -61,7 +61,7 @@ class CategorieF extends React.Component{
           Shoes
         </MDBCardTitle>
         <MDBCardTitle>
-          <a href="#!"><strong>Product name</strong></a>
+          <Link to="Product"> <strong>Product name</strong></Link>
         </MDBCardTitle>
         <ul className="rating" style={{display:" -webkit-inline-box","list-style-type": "none"
 }}>
@@ -81,6 +81,7 @@ class CategorieF extends React.Component{
             <MDBIcon className="far" icon="star" />
           </li>
         </ul>
+
         <MDBCardText>
           Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
           eveniet ut et voluptates. Temporibus autem quibusdam. Lorem Ipsum dolor ament.

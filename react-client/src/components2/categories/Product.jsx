@@ -25,33 +25,10 @@ import {
   MDBBtn
 } from "mdbreact";
 
-class Product extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      userdata: {
-        userId: "",
-        hastoken: false
-      }
-    };
-  }
-  componentDidMount() {
-    // $.ajax({
-    //   url: '/someroute',
-    //   success: (data) => {
-    //     this.setState({
-    //       someState: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
-  }
-  render(){
+const Product = () => {
   return (
     <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
-      <Link to="/men/category/ProductID/ProductDetails">
+      <Link to="/men/category/ProductID">
         <MDBCard className="align-items-center">
           <MDBCardImage
             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
@@ -60,18 +37,16 @@ class Product extends React.Component{
             overlay="white-slight"
           />
           <MDBCardBody className="text-center">
-            <a href="#!" className="grey-text">
+
               <h5>Shirt</h5>
               {/* name to rendere  */}
-            </a>
+
             <h5>
               <strong>
-                <a href="#!" className="dark-grey-text">
                   Denim shirt{" "}
                   <MDBBadge pill color="danger">
                     NEW {/* change on state new best discount */}
                   </MDBBadge>
-                </a>
               </strong>
             </h5>
             <h4 className="font-weight-bold blue-text">
@@ -82,6 +57,5 @@ class Product extends React.Component{
       </Link>
     </MDBCol>
   );
-  }
 };
-module.exports= Product;
+export default Product;

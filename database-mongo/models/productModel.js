@@ -5,7 +5,10 @@ var productSchema = mongoose.Schema({
   description: String,
   brand: String,
   price: Number,
-
+  availability: {
+    type: Boolean,
+    default: true
+  },
   image: {
     type: String,
     default: "https://gear.nitro.com/content/images/thumbs/default-image_600.png"
@@ -19,7 +22,7 @@ var productSchema = mongoose.Schema({
     default: 5
   },
   size: [String],
-  tags: [String],
+  tag: String,
   color: String,
   category: String
 });
